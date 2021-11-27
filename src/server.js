@@ -11,7 +11,7 @@ import viewsRouter from "./routers/views/views.router.js";
 import passport from "./utils/passport.util.js";
 dotenv.config();
 
-const { MONGODB_URI, PORT, SECRET, NODE_ENV } = process.env;
+const { MONGODB_URI, SECRET, NODE_ENV } = process.env;
 const MongoStore = MongoSession(session);
 
 const store = new MongoStore({
@@ -71,9 +71,11 @@ app.get("/logout", (req, res) => {
   });
 });
 
-const server = app.listen(PORT, () => {
+const port = process.env.PORT || 3030;
+
+const server = app.listen(port, () => {
   console.log(
-    `Servidor express corriendo en el puerto http://localhost:${PORT}`
+    `Servidor express corriendo en el puerto http://localhost:${port}`
   );
 });
 
