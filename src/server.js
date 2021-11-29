@@ -51,12 +51,12 @@ app.use(passport.session());
 app.use("/api", apiRouter).use("/", viewsRouter);
 
 app.get("/", (req, res) => {
-  //console.log(req.user);
-  if (req.isAuthenticated()) {
+  res.redirect("/products")
+/*  if (req.isAuthenticated()) {
     res.redirect("/products");
   } else {
     res.redirect("/login");
-  }
+  }*/
 });
 
 app.get("/logout", (req, res) => {
